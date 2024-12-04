@@ -1,0 +1,53 @@
+###service Document
+http://localhost:4004/odata/v4/CatalogService
+###service Metadata document
+http://localhost:4004/odata/v4/CatalogService/$metadata
+
+###Service Employee Data
+
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+
+###service Selected fields of EmployeeSet
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$select=ID,nameFirst,nameLast,loginName
+###Service Pagination using $top and $skip
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$top=2&$skip=2
+###Service data filter using $filter
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=Currency_code eq 'USD'
+###Service filter with partial name
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=contains(nameFirst,'Tarun')
+###Srrvice to fetch the data by passing the Employee ID
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C199C7FB
+###Service URL to fecth the total count of data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/$count
+
+###Service URL to create an entry
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Content-Type: application/json
+
+{
+      "nameFirst": "Suresh",
+      "nameMiddle": "",
+      "nameLast": "Prasad",
+      "nameInitials": null,
+      "sex": "M",
+      "language": "E",
+      "phoneNumber": null,
+      "email": "suresh.p@ibm.com",
+      "loginName": "FALLF",
+      "Currency_code": "INR",
+      "salaryAmount": 8596200,
+      "accountNumber": "8877665567",
+      "bankId": "12100035",
+      "bankName": "HDFC BANK CO LIMITED"
+}
+
+###service URL to update an existing record
+PATCH http://localhost:4004/odata/v4/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19B87FB
+Content-Type: application/json
+
+{
+   "salaryAmount": 20000000 
+}
+
+###service to get the purchaseorder details
+http://localhost:4004/odata/v4/CatalogService/POs
